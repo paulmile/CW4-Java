@@ -2,12 +2,12 @@ package CW4;
 
 
 /**
- * interface ZAPP  for 5COM2007 Cwk 4
+ * interface CARE  for 5COM2007 Cwk 4
  *
  * @author Mohamad & Bailey
  * @version 18/4/2024
  */
-public interface ZAPP {
+public interface CARE {
     /**
      * Returns all of the details of the game
      */
