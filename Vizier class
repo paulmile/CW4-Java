@@ -6,7 +6,7 @@ public class Vizier{
     private String name;
     private int treasury = 1000;
 
-    private ArrayList<String> team;
+    private ArrayList<Integer> team;
     private boolean hasChampions;
     private boolean isTreasuryInDebt;
 
