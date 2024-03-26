@@ -9,10 +9,10 @@ public class Dragon extends Champion{
      * @param nme - name of the dragon
      * @param talk - boolean to indicate whether the dragon can talk
      */ 
-     public Dragon(String nme, boolean talk)
+     public Dragon(String nme, boolean canTalk)
      {
           super(nme, this.skillLevel, this.entryFee);
-          this.canTalk = talk;
+          this.canTalk = canTalk;
      }
 
      /** Implements toString from Champion class
