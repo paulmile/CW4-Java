@@ -1,44 +1,48 @@
-package cwk4;
+ 
 
 public abstract class Champion {
 
     private String name;
     private int championID;
     private int skillLevel;
-    private int entryFee;
     private ChampionState state;
     private static int nextChampID = 0;
 
     /** constructor
     * @param nme - name of the champion
     * @param skill - skill level of the champion
-    * @param fee - fee amount to hire a champion
     */
-    public Champion(String nme, int skill, int fee)
+    public Champion(String nme, int skill)
     {
         this.name = nme;
         this.skillLevel = skill;
-        this.entryFee = fee;
-
         this.state = ChampionState.WAITING;
         this.championID = nextChampID;
         nextChampID ++;
     }
-
+    
+    /** Returns the champion's ID number
+     * @return ID number
+     */
+    public int getChampionID()
+    {
+        return championID;
+    }
+    
+    /** Returns the champion's name
+     * @return ID number
+     */
+    public String getName()
+    {
+        return name;
+    }
+    
     /** Returns the champion's skill level
      * @return skill level
      */
     public int getSkillLvl()
     {
         return skillLevel;
-    }
-
-    /** Returns the champion's fee
-     * @return fee amount
-     */
-    public int getEntryFee()
-    {
-        return entryFee;
     }
 
     /** Returns the champion's current state
@@ -48,7 +52,8 @@ public abstract class Champion {
     {
         return state;
     }
-
+    
+    
     /** Checks whether champion is skilled enough to win the challange
      * @param requirement - skill level of the enemy
      * @return True if champion wins, False if champion loses
@@ -57,9 +62,9 @@ public abstract class Champion {
     {
         if (skillLevel >= requirement)
         {
-            return True;
+            return true;
         }else{
-            return False;
+            return false;
         }
     }
     
@@ -67,6 +72,13 @@ public abstract class Champion {
     /** Returns a String representation of the champion information
      *  @return the champion information as a String
      */
-    public abstract String toString();
+    public String toString()
+    {
+        String s = getState() + "\n" +
+          "Champion ID: " + getChampionID() + "\n" +
+          "Name: " + getName() + "\n" +
+          "Skill Level: " + getSkillLvl() + "\n";
+          return s;
+    }
     
 }
