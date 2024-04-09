@@ -3,10 +3,8 @@ import java.util.ArrayList;
 
 
 public class Vizier{
-    private String name;
+    private final String name;
     private int treasury = 1000;
-
-    //Changed ArrayList data type to store Champion objects instead of Integer
     private ArrayList<Champion> team = new ArrayList<Champion>();
     private boolean hasChampions;
     private boolean isTreasuryInDebt;
@@ -21,19 +19,70 @@ public class Vizier{
         return treasury;
     }
 
+    public String viewReserveList(){
+        String s = "";
+        for (Champion champion : Tournament.reserveList) {
+            s += champion.toString();
+        }
+        return s;
+    }
+
     public String getVizierName(){
         return name;
     }
 
-    // Write hasChampions function that returns a boolean
+    public boolean hasChampion(Champion champion){
+        for (Champion temp: team){
+            if (temp.equals(champion)){
+                return true;
+            }
+        }
+        return false;
+    }
 
+    public String getChampion(Champion champ){
+        String s = "";
+        for (Champion champion : team){
+            s += champion.toString();
+        }
+        return s;
+    }
 
-    // Write isTreasuryInDebt function that returns a boolean
+    public String getTeam(){
+        String s = "";
+        for (Champion champion : team){
+            s += champion.toString();
+        }
+        return s;
+    }
 
+    public boolean isTreasuryInDebt(){
+        return treasury < 0;
+    }
 
-    //public String addChampionToTeam(Champion champion){
-    //    if (treasury > 0){
-    //        if (champion )
-    //    }
-    //}
+    public int addChampionToTeam(Champion champion){
+        if (hasChampion(champion)){
+            return 0;
+        }
+        if (!team.inReserve(champion)) {
+            return -1;
+        }
+        if (treasury < champion.getEntryFree()){
+            return 2;
+        }
+
+        treasury -= Champion.getEntryFee;
+
+        team.add(champion);
+
+        return 0;
+    }
+
+    public String toString(){
+        return "Vizier name: " + getVizierName() +
+                "\nTreasury: " + getTreasury() +
+                "\nTeam contains Champions? " + hasChampions +
+                "\nIs Vizier in debt? " + isTreasuryInDebt +
+                "\nVizier Team: " + getTeam();
+    }
 }
